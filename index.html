@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kōwa · Bioespacio creativo · Barbosa</title>
+<meta name="description" content="Café, galería de artistas locales y cerámica para pintar en Barbosa, Santander.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root{--peach:#f3c3ab;--peach-d:#e39c7c;--navy:#14284b;--gold:#c9a24b;--cream:#fdf3e8;--leaf:#4f7a47;--ink:#2b2320;
+--t:'Fredoka',system-ui,sans-serif;--b:'Lora',Georgia,serif}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth;scroll-padding-top:60px}
+body{font-family:var(--b);background:var(--cream);color:var(--ink);line-height:1.65;font-size:17px}
+img{max-width:100%;display:block}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+h1,h2,h3,.btn,nav,.tab{font-family:var(--t)}
+h2{font-size:clamp(1.9rem,6vw,2.6rem);line-height:1.1;margin-bottom:.6rem;color:var(--navy)}
+section{padding:3.5rem 1.2rem}
+.w{max-width:960px;margin:auto}
+.dots{display:flex;gap:8px;justify-content:center;margin:1rem 0}
+.dots i{width:12px;height:12px;border-radius:50%}
+nav{position:sticky;top:0;z-index:9;background:var(--navy);display:flex;align-items:center;gap:.2rem;padding:.4rem .6rem;overflow-x:auto}
+nav a{color:var(--cream);text-decoration:none;padding:.5rem .7rem;white-space:nowrap;font-size:.95rem}
+nav a:hover{color:var(--gold)}
+#lang{margin-left:auto;background:var(--gold);color:var(--navy);border:0;border-radius:99px;padding:.4rem .9rem;font:600 .9rem var(--t);cursor:pointer}
+.hero{background:var(--peach);text-align:center;padding:3rem 1.2rem 3.5rem;min-height:82vh;display:flex;flex-direction:column;justify-content:center;align-items:center}
+.pal{width:min(88vw,400px);aspect-ratio:1.15;background:var(--navy);display:flex;flex-direction:column;align-items:center;justify-content:center;color:var(--gold);
+border-radius:58% 42% 55% 45%/50% 55% 45% 50%;position:relative;box-shadow:0 14px 30px rgba(20,40,75,.3)}
+.pal:after{content:"";position:absolute;right:11%;bottom:10%;width:15%;aspect-ratio:1;border-radius:50%;background:var(--peach)}
+.logo{font:600 clamp(4.5rem,22vw,7.5rem)/1 var(--t);letter-spacing:-.02em}
+.pal small{font:1.05rem var(--b);letter-spacing:.08em}
+.hero p{max-width:32ch;margin:1.6rem auto 1.4rem;font-size:1.15rem}
+.btns{display:flex;flex-wrap:wrap;gap:.7rem;justify-content:center}
+.btn{display:inline-block;padding:.85rem 1.6rem;border-radius:99px;text-decoration:none;font-weight:600;font-size:1.05rem;background:var(--navy);color:var(--cream);border:2px solid var(--navy)}
+.btn.big{background:var(--gold);color:var(--navy);border-color:var(--gold);font-size:1.25rem;padding:1rem 2.2rem}
+.btn.o{background:transparent;color:var(--navy)}
+#menu{background:var(--navy);color:var(--cream)}
+#menu h2{color:var(--gold)}
+.tabs{display:flex;gap:.5rem;overflow-x:auto;padding:.8rem 0}
+.tab{background:transparent;color:var(--cream);border:2px solid var(--gold);border-radius:99px;padding:.5rem 1rem;font-size:1rem;cursor:pointer;white-space:nowrap}
+.tab[aria-selected=true]{background:var(--gold);color:var(--navy)}
+.item{display:flex;justify-content:space-between;gap:1rem;padding:.85rem 0;border-bottom:1px dashed rgba(253,243,232,.3)}
+.item b{font:400 1.15rem var(--b)}
+.item em{display:block;font-size:.9rem;opacity:.75}
+.pr{font:600 1.25rem var(--t);color:var(--gold);white-space:nowrap}
+.note{font-size:.9rem;opacity:.7;margin-top:1rem}
+.two{display:grid;gap:1.5rem;align-items:center}
+.two img{border-radius:14px;width:100%;object-fit:cover}
+.chips{display:flex;flex-wrap:wrap;gap:.5rem;margin:1rem 0}
+.chip{background:var(--peach);border-radius:99px;padding:.3rem .9rem;font-family:var(--t);font-size:.95rem}
+.price{font:600 1.5rem var(--t);color:var(--leaf)}
+#galeria{background:var(--peach)}
+.gal{display:grid;grid-template-columns:1fr 1fr;gap:.6rem;margin-top:1.2rem}
+.gal img{border-radius:10px;aspect-ratio:4/3;object-fit:cover;width:100%}
+.gal img:first-child{grid-column:1/-1;aspect-ratio:16/10}
+#ceramica{background:var(--cream)}
+#nosotros .two img{aspect-ratio:1;object-fit:cover}
+#visita{background:var(--navy);color:var(--cream)}
+#visita h2{color:var(--gold)}
+#visita .btn{background:var(--gold);color:var(--navy);border-color:var(--gold)}
+#visita .btn.o{background:transparent;color:var(--cream)}
+footer{background:#0d1a33;color:var(--cream);text-align:center;padding:1.5rem;font-size:.9rem}
+@media(min-width:720px){.two{grid-template-columns:1fr 1fr;gap:3rem}.rev>:first-child{order:2}.gal{grid-template-columns:repeat(3,1fr)}.gal img:first-child{grid-column:auto;aspect-ratio:4/3}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<nav aria-label="Principal">
+<a href="#menu" data-es="Menú" data-en="Menu"></a>
+<a href="#ceramica" data-es="Cerámica" data-en="Ceramics"></a>
+<a href="#galeria" data-es="Galería" data-en="Gallery"></a>
+<a href="#nosotros" data-es="Nosotros" data-en="About"></a>
+<a href="#visita" data-es="Visítanos" data-en="Visit"></a>
+<button id="lang" aria-label="Cambiar idioma / Change language">EN</button>
+</nav>
+
+<header class="hero">
+<div class="pal" role="img" aria-label="Kōwa, bioespacio creativo">
+<span class="logo">kōwa</span><small>bioespacio creativo</small>
+</div>
+<div class="dots"><i style="background:#c9a24b"></i><i style="background:#b9744f"></i><i style="background:#4f7a47"></i><i style="background:#14284b"></i><i style="background:#e39c7c"></i></div>
+<p data-es="Café, arte local y cerámica para pintar, todo en un mismo lugar." data-en="Coffee, local art and pottery to paint, all in one place."></p>
+<div class="btns">
+<a class="btn big" href="#menu" data-es="Ver menú" data-en="See the menu"></a>
+<a class="btn o" href="#ceramica" data-es="Pinta tu cerámica" data-en="Paint your pottery"></a>
+<a class="btn o" href="#galeria" data-es="Galería" data-en="Gallery"></a>
+</div>
+</header>
+
+<section id="menu"><div class="w">
+<h2 data-es="Nuestro menú" data-en="Our menu"></h2>
+<p data-es="Precios en miles de pesos (4k = $4.000)." data-en="Prices in thousands of Colombian pesos (4k = COP 4,000)."></p>
+<div class="tabs" role="tablist" id="tabs"></div>
+<div id="list" role="tabpanel"></div>
+<p class="note" data-es="El menú puede variar según el día. Pregunta por el postre del día." data-en="The menu may change from day to day. Ask about today's dessert."></p>
+</div></section>
+
+<section id="ceramica"><div class="w two">
+<img src="img/ceramicas.jpg" loading="lazy" alt="Estante con piezas de cerámica, lienzos y pinturas">
+<div>
+<h2 data-es="Pinta tu propia cerámica" data-en="Paint your own pottery"></h2>
+<p data-es="Elige una pieza, escoge tus colores y déjate llevar mientras tomas un café. Puedes dejarla en el espacio o llevártela." data-en="Pick a piece, choose your colors and get lost in it over a coffee. Leave it here or take it home."></p>
+<div class="chips">
+<span class="chip" data-es="Figuras" data-en="Figures"></span>
+<span class="chip" data-es="Materas" data-en="Planters"></span>
+<span class="chip" data-es="Platos y tazones" data-en="Plates and bowls"></span>
+<span class="chip" data-es="Lienzos" data-en="Canvases"></span>
+</div>
+<p class="price" data-es="Piezas desde 10k hasta 50k" data-en="Pieces from 10k to 50k"></p>
+<p class="note" data-es="Tamaños y precios varían según la pieza. Los lienzos también están disponibles para pintar." data-en="Sizes and prices vary by piece. Canvases are also available to paint."></p>
+</div></div></section>
+
+<section id="galeria"><div class="w">
+<h2 data-es="Arte de artistas locales" data-en="Art by local artists"></h2>
+<p data-es="Kōwa tiene un espacio para exposiciones de artistas locales: pintura y escultura en madera y metal. Ven a conocerlas y pregunta por las obras." data-en="Kōwa has a space for exhibitions by local artists: paintings and sculptures in wood and metal. Come see them and ask about the pieces."></p>
+<div class="gal">
+<img src="img/galeria2.jpg" loading="lazy" alt="Sala de exposición con pinturas y esculturas">
+<img src="img/galeria3.jpg" loading="lazy" alt="Pinturas y esculturas expuestas">
+<img src="img/galeria1.jpg" loading="lazy" alt="Pinturas de granada y naranja con esculturas">
+</div>
+</div></section>
+
+<section id="nosotros"><div class="w two rev">
+<img src="img/plantas.jpg" loading="lazy" alt="Pared color durazno con plantas colgantes y escultura de madera">
+<div>
+<h2 data-es="Sobre Kōwa" data-en="About Kōwa"></h2>
+<p data-es="Kōwa es un bioespacio creativo: un lugar para tomar café, rodearte de plantas, ver arte hecho en la región y crear con tus manos." data-en="Kōwa is a creative bio-space: a place to drink coffee, be surrounded by plants, see art made in the region and create with your own hands."></p>
+</div></div></section>
+
+<section id="visita"><div class="w">
+<h2 data-es="Visítanos" data-en="Visit us"></h2>
+<p>Calle 12 # 7 - 46, Barbosa, Santander</p>
+<p data-es="Horarios: por confirmar" data-en="Opening hours: to be confirmed"></p>
+<div class="btns" style="justify-content:flex-start;margin-top:1.2rem">
+<a class="btn" href="https://www.google.com/maps?q=5.9318010,-73.6145776" target="_blank" rel="noopener" data-es="Cómo llegar" data-en="Get directions"></a>
+<a class="btn o" href="https://wa.me/573138895451" target="_blank" rel="noopener">WhatsApp</a>
+<a class="btn o" href="https://instagram.com/kowa.cafe" target="_blank" rel="noopener">Instagram</a>
+</div>
+</div></section>
+
+<footer>© Kōwa · bioespacio creativo</footer>
+
+<script>
+const M=[
+{k:["Calientes","Hot"],i:[["Café Americano","Americano",4],["Café Espresso","Espresso",4],["Capuchino","Cappuccino",8],["Café Marroquín","Moroccan coffee",10,"Espresso con crema de avellana, leche espumada y cacao en polvo","Espresso with hazelnut cream, steamed milk and cocoa powder"]]},
+{k:["Fríos","Cold"],i:[["Café Dalgona","Dalgona coffee",12],["Cinnamon coffee","Cinnamon coffee",12],["Iced coffee latte","Iced coffee latte",10]]},
+{k:["Aromáticas","Herbal teas"],i:[["Gulupa y limón","Passion fruit and lemon",6],["Frutos del bosque (fresa y mora)","Forest fruits (strawberry and blackberry)",6],["De jengibre y limón","Ginger and lemon",6],["De hierbas","Herbs",4]]},
+{k:["Sodas","Sodas"],i:[["Soda italiana de jengibre y limón","Italian soda: ginger and lemon",9],["Soda italiana de gulupa","Italian soda: passion fruit",9],["Soda italiana de frutos rojos","Italian soda: red berries",9],["Soda limón","Lemon soda",6]]},
+{k:["Tortas y postres","Cakes and desserts"],i:[["Torta Tentación","Temptation cake",10,"Chocolate y crema de avellana","Chocolate and hazelnut cream"],["Torta de manzana","Apple cake",10],["Torta de plátano","Banana cake",10],["Postre de temporada","Seasonal dessert",10,"Pregunta por el postre del día","Ask about today's dessert"]]},
+{k:["Otras bebidas","Other drinks"],i:[["Copa de vino","Glass of wine",9],["Cerveza Stella Artois","Stella Artois beer",8]]}
+];
+let L="es",T=0;
+const $=s=>document.querySelector(s),ix=()=>L=="es"?0:1;
+function drawMenu(){
+$("#tabs").innerHTML=M.map((c,n)=>`<button class="tab" role="tab" aria-selected="${n==T}" data-n="${n}">${c.k[ix()]}</button>`).join("");
+$("#list").innerHTML=M[T].i.map(x=>`<div class="item"><div><b>${x[ix()]}</b>${x[3]?`<em>${x[3+ix()]}</em>`:""}</div><span class="pr">${x[2]}k</span></div>`).join("");
+}
+$("#tabs").onclick=e=>{const b=e.target.closest(".tab");if(b){T=+b.dataset.n;drawMenu()}};
+function setLang(l){
+L=l;document.documentElement.lang=l;
+document.querySelectorAll("[data-es]").forEach(e=>e.textContent=e.dataset[l]);
+$("#lang").textContent=l=="es"?"EN":"ES";
+drawMenu();
+}
+$("#lang").onclick=()=>setLang(L=="es"?"en":"es");
+setLang("es");
+</script>
+</body>
+</html>
