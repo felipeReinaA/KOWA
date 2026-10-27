@@ -80,6 +80,12 @@ footer{background:#150d0c;color:#cbbdb8;text-align:center;padding:1.5rem 1.2rem 
 footer b{color:#fff}
 footer .marca{color:var(--turq)}
 
+
+#pop{position:fixed;inset:0;z-index:50;background:rgba(20,10,9,.75);display:none;align-items:center;justify-content:center;padding:1rem}
+#pop.on{display:flex}
+#pop .box{position:relative;max-width:min(92vw,480px);max-height:90vh}
+#pop img{width:100%;max-height:90vh;object-fit:contain;border-radius:14px;box-shadow:0 10px 40px rgba(0,0,0,.5)}
+#pop button{position:absolute;top:-14px;right:-6px;width:44px;height:44px;border-radius:50%;border:2px solid var(--dark);background:var(--coral);color:#fff;font:600 1.6rem/1 var(--t);cursor:pointer;box-shadow:0 3px 10px rgba(0,0,0,.4)}
 @media(min-width:720px){.two{grid-template-columns:1fr 1fr;gap:3rem}.rev>:first-child{order:2}.gal{grid-template-columns:repeat(3,1fr)}.gal img:first-child{grid-column:auto;aspect-ratio:4/3}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 </style>
@@ -169,6 +175,11 @@ footer .marca{color:var(--turq)}
 <p><a href="tel:+573214575787">📱 +57 321 457 5787</a> &nbsp;·&nbsp; <a href="https://wa.me/573214575787" target="_blank" rel="noopener">💬 WhatsApp</a></p>
 </footer>
 
+<div id="pop" role="dialog" aria-modal="true" aria-label="Taller de dibujo básico">
+<div class="box"><button id="popx" aria-label="Cerrar / Close">&times;</button>
+<img src="img/taller.jpg" alt="Taller de dibujo básico en Kōwa" onerror="document.getElementById('pop').remove()"></div>
+</div>
+
 <script>
 const M=[
 {k:["Calientes","Hot"],i:[["Café Americano","Americano",4],["Café Espresso","Espresso",4],["Capuchino","Cappuccino",8],["Café Marroquín","Moroccan coffee",10,"Espresso con crema de avellana, leche espumada y cacao en polvo","Espresso with hazelnut cream, steamed milk and cocoa powder"]]},
@@ -176,7 +187,7 @@ const M=[
 {k:["Aromáticas","Herbal teas"],i:[["Gulupa y limón","Passion fruit and lemon",6],["Frutos del bosque (fresa y mora)","Forest fruits (strawberry and blackberry)",6],["De jengibre y limón","Ginger and lemon",6],["De hierbas","Herbs",4]]},
 {k:["Sodas","Sodas"],i:[["Soda italiana de jengibre y limón","Italian soda: ginger and lemon",9],["Soda italiana de gulupa","Italian soda: passion fruit",9],["Soda italiana de frutos rojos","Italian soda: red berries",9],["Soda limón","Lemon soda",6]]},
 {k:["Tortas y postres","Cakes and desserts"],i:[["Torta Tentación","Temptation cake",10,"Chocolate y crema de avellana","Chocolate and hazelnut cream"],["Torta de manzana","Apple cake",10],["Torta de plátano","Banana cake",10],["Postre de temporada","Seasonal dessert",10,"Pregunta por el postre del día","Ask about today's dessert"]]},
-{k:["Otras bebidas","Other drinks"],i:[["Copa de vino","Glass of wine",9],["Cerveza Stella Artois","Stella Artois beer",8]]}
+{k:["Otras bebidas","Other drinks"],i:[["Copa de vino","Glass of wine",9],["Cerveza BBC","BBC beer",10],["Cerveza Stella Artois","Stella Artois beer",10]]}
 ];
 let L="es",T=0;
 const $=s=>document.querySelector(s),ix=()=>L=="es"?0:1;
@@ -196,6 +207,15 @@ langBtn.id="lang";langBtn.setAttribute("aria-label","Cambiar idioma / Change lan
 document.body.appendChild(langBtn);
 langBtn.onclick=()=>{L=L=="es"?"en":"es";refreshTexts()};
 refreshTexts();
+
+const pop=document.getElementById("pop");
+if(pop){
+const closePop=()=>pop.classList.remove("on");
+pop.classList.add("on");
+document.getElementById("popx").onclick=closePop;
+pop.onclick=e=>{if(e.target===pop)closePop()};
+document.addEventListener("keydown",e=>{if(e.key==="Escape")closePop()});
+}
 </script>
 </body>
 </html>
